@@ -1,4 +1,6 @@
 const fs=require("fs")
+const chalk=require("chalk")
+
 const getNotes =function(notes){
     console.log(notes)
 }
@@ -52,11 +54,20 @@ const removeNote=function(title){
     })
     saveNotes(newNotes)
     console.log("remove")
-
 }
 
+
+const listNotes=()=>{
+    const notes=loadNotes();
+    notes.map(el=>{
+        console.log(chalk.bgRed(el.name))
+        console.log(chalk.bgGreen(el.age))
+    })
+
+}
 module.exports={
     getNotes:getNotes,
     addNote:addNote,
-    removeNote:removeNote
+    removeNote:removeNote,
+    listNotes:listNotes
 }

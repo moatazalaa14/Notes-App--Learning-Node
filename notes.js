@@ -66,9 +66,16 @@ yargs.command({
     command:"list",
     descirbe:"Lists of items is ",
     handler:function(){
-        console.log("Item Listed!")
+        notes.listNotes()
     }
 })
+
+
+
+
+
+
+
 yargs.command({
     command:"read",
     descirbe:"read note which added",
