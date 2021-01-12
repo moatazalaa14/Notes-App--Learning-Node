@@ -3,6 +3,14 @@ const getNotes =function(notes){
     console.log(notes)
 }
 
+var ID = function () {
+   
+    return '_' + Math.random().toString(36).substr(2, 9);
+  };
+
+
+
+
 const addNote=function(title,body){
     const notes= loadNotes()
     const newNotes=notes.filter(function(note){
@@ -20,6 +28,9 @@ const addNote=function(title,body){
 
 }
 
+
+
+
 const saveNotes=(notes)=>{
  const dataJson=JSON.stringify(notes)
  fs.writeFileSync("notes.json",dataJson)
@@ -30,11 +41,22 @@ const loadNotes=function(){
         const dataJson=JSON.parse(dataBuffer.toString())
         return dataJson
     } catch (error) {
-        return "ggg"
+        return []
     }
+}
+
+const removeNote=function(title){
+    const notes=loadNotes()
+    const newNotes=notes.filter(function(note){
+        return note.name !==title
+    })
+    saveNotes(newNotes)
+    console.log("remove")
+
 }
 
 module.exports={
     getNotes:getNotes,
-    addNote:addNote
+    addNote:addNote,
+    removeNote:removeNote
 }

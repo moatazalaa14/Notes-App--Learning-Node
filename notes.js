@@ -21,13 +21,47 @@ yargs.command({
         notes.addNote(argv.title,argv.body)
     }
 })
+
+
+
+
+
 yargs.command({
     command:"remove",
     descirbe:"This for removing notes",
-    handler:function(){
-        console.log("Note Removed!")
+    handler:function(argv){
+        notes.removeNote(argv.title)
+    },
+    builder:{
+        title:{
+            describe:"Note Removed!",
+            demandOption:true,
+            type:"string"
+        },
+        body:{
+            describe:"Note Removed!",
+            demandOption:false,
+            type:"string"
+        },
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 yargs.command({
     command:"list",
     descirbe:"Lists of items is ",
